@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base theme colors - using RGB values for opacity support */
+    --theme-bg: 1 2 2;
+    --theme-bg-secondary: 10 11 12;
+    --theme-border: 21 140 108;
+    --theme-accent: 0 214 158;
+    --theme-accent-dark: 21 140 108;
+    --theme-text-primary: 249 250 251;
+    --theme-text-secondary: 156 163 175;
+    --theme-text-accent: 0 214 158;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-theme-border;
+  }
+  body {
+    @apply bg-theme-bg text-theme-text-primary;
+  }
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 214, 158, 0.3) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 214, 158, 0.3);
+  border-radius: 9999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 214, 158, 0.5);
+}
+
+/* Component styles */
+.card {
+  @apply bg-theme-bg border border-theme-border rounded-lg shadow-lg;
+}
+
+.button-primary {
+  @apply bg-theme-accent hover:bg-theme-accent-dark text-theme-bg rounded-lg transition-colors;
+}
+
+.button-secondary {
+  @apply bg-theme-accent-dark hover:bg-theme-accent-dark/80 text-theme-text-primary rounded-lg transition-colors;
+}
+
+.input {
+  @apply bg-theme-bg border border-theme-border text-theme-text-primary rounded-lg focus:border-theme-accent focus:ring-1 focus:ring-theme-accent;
+}
+
+/* Grid layout styles */
+.react-grid-item.react-grid-placeholder {
+  @apply bg-theme-accent/20 border border-dashed border-theme-accent rounded-lg;
+}
+
+.react-resizable-handle {
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2300d69e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M22 11.08V12a10 10 0 11-5.93-9.14"%3E%3C/path%3E%3Cpath d="M22 4L12 14.01l-3-3"%3E%3C/path%3E%3C/svg%3E') !important;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  opacity: 0.5;
+}
+
+.react-resizable-handle:hover {
+  opacity: 1;
+}
+
+.react-grid-item {
+  transition: all 200ms ease;
+}
+
+.react-grid-item.cssTransforms {
+  transition-property: transform;
+}
+
+.react-grid-item.resizing {
+  z-index: 1;
+  will-change: width, height;
+}
+
+.react-grid-item.react-draggable-dragging {
+  transition: none;
+  z-index: 3;
+  will-change: transform;
+  cursor: move;
+  @apply shadow-lg shadow-theme-accent/20 opacity-80;
+}
+
+.dashboard-grid > .react-grid-item > .bg-white {
+  @apply bg-theme-bg;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-grid .react-grid-item > .bg-white > div:last-child {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+/* Visual feedback for auto-resizing */
+.react-grid-item.auto-resizing {
+  animation: pulse 1s;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 214, 158, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 214, 158, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 214, 158, 0);
+  }
+}
+
+/* Theme utility classes */
+.theme-card {
+  @apply bg-theme-bg border border-theme-border rounded-lg;
+}
+
+.theme-input {
+  @apply bg-theme-bg border border-theme-border text-theme-text-primary rounded-lg focus:border-theme-accent focus:ring-1 focus:ring-theme-accent;
+}
+
+.theme-button {
+  @apply bg-theme-accent hover:bg-theme-accent-dark text-theme-bg rounded-lg transition-colors;
+}
+
+.theme-button-secondary {
+  @apply bg-theme-accent/20 hover:bg-theme-accent/30 text-theme-accent rounded-lg transition-colors;
+}
+
+.theme-text-gradient {
+  @apply bg-gradient-to-r from-theme-accent to-theme-accent-dark bg-clip-text text-transparent;
+}
+
+.theme-border-gradient {
+  @apply border-2 border-transparent bg-gradient-to-r from-theme-accent to-theme-accent-dark;
+  background-clip: padding-box;
+}
+
+.theme-hover-effect {
+  @apply hover:bg-theme-accent/10 transition-colors;
+}
+
+.theme-active-effect {
+  @apply active:bg-theme-accent/20 transition-colors;
+}
+
+.theme-focus-ring {
+  @apply focus:ring-2 focus:ring-theme-accent focus:ring-offset-2 focus:ring-offset-theme-bg focus:outline-none;
+}
